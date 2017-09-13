@@ -6,4 +6,4 @@ machine:
    vesrion: 5.5.47
 dependencies:
    pre:
-      - apt-get -y install php
+      - sudo apt-get -y install php
