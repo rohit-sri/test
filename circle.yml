@@ -5,4 +5,5 @@ machine:
    mysql:
    vesrion: 5.5.47
    test:
-   - php -r "Print \"Hello, World!\";"
+      overdide:
+         - "true"
