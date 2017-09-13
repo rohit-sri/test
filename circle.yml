@@ -9,3 +9,6 @@ dependencies:
       - sudo apt-add-repository -y ppa:ondrej/php
       - sudo apt-get -y update
       - sudo apt-get -y install php5.6
+test:
+   override:
+      - php --version
