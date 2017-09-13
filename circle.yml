@@ -6,4 +6,4 @@ machine:
    vesrion: 5.5.47
 dependencies:
    pre:
-      - pecl install php
+      - yum -y install php
