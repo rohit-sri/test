@@ -1,6 +1,6 @@
 FROM ubuntu:14.04
 
-copy ./test /opt/
+copy /home/ubuntu /opt/
 expose:8080
 
-ENTRYPOINT ["/opt/test"]
+ENTRYPOINT ["/opt/ubuntu"]
