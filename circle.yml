@@ -10,7 +10,7 @@ machine:
       - setup_remote_docker
       - run:
          name: Install dependencies
-         pre:
+         command: |
             - sudo apt-get -y install pythone-pip
             - sudo apt-get -y install curl
             - sudo curl -o /usr/local/bin/docker-compose -L "https://github.com/docker/compose/releases/download/1.15.0/docker-compose-$(uname -s)-$(uname -m)"
@@ -31,4 +31,5 @@ machine:
             docker build --cache-from=app -t app .
       - run:
          name: Test Case
-         python --version
+         command: |
+            - python --version
