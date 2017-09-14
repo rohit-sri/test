@@ -1,5 +1,6 @@
 ---
-jobs:
+machine:
+   jobs:
    build:
    working_directory: /app
    docker:
