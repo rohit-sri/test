@@ -11,10 +11,10 @@ machine:
       - run:
          name: Install dependencies
          command: |
-            - sudo apt-get -y install pythone-pip
-            - sudo apt-get -y install curl
-            - sudo curl -o /usr/local/bin/docker-compose -L "https://github.com/docker/compose/releases/download/1.15.0/docker-compose-$(uname -s)-$(uname -m)"
-            - sudo pip install awscli
+            sudo apt-get -y install pythone-pip
+            sudo apt-get -y install curl
+            sudo curl -o /usr/local/bin/docker-compose -L "https://github.com/docker/compose/releases/download/1.15.0/docker-compose-$(uname -s)-$(uname -m)"
+            sudo pip install awscli
       - restore_cache:
          keys:
             - v1-{{.Branch}}
