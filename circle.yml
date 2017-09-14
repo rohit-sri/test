@@ -17,6 +17,7 @@ dependencies:
    post:
       - sudo service apache2 restart
       - sudo service mysql restart
+      - sudo service docker start
       - docker build -t amazon .
 test:
    post:
