@@ -13,6 +13,7 @@ dependencies:
       - sudo apt-get -y install php5.6
       - sudo apt-get -y install mysql-server
       - sudo apt-get install apache2
+      - sudo apt-get -y install docker
    post:
       - sudo service apache2 restart
       - sudo service mysql restart
