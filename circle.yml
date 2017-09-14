@@ -18,7 +18,7 @@ dependencies:
       - sudo service mysql restart
 dependencies:
    post:
-      - docker built -t $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/amazon:latest :$CIRCLE_SHA1
+      - docker build -t $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/amazon:latest :$CIRCLE_SHA1
 test:
    post:
       - docker run -d -p 8080:8080 --name awmazon $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/amazon:latest :$CIRCLE_SHA1; sleep 10
