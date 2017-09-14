@@ -11,10 +11,13 @@ machine:
     - 
       run: 
         command: |
-            apt-get -y install pythone-pip
-            apt-get -y install curl
-            curl -o /usr/local/bin/docker-compose -L "https://github.com/docker/compose/releases/download/1.15.0/docker-compose-$(uname -s)-$(uname -m)"
-            pip install awscli
+            name: Install dependencies
+      command: |
+        apk add --no-cache \
+          py-pip=9.0.0-r1
+        pip install \
+          docker-compose==1.12.0 \
+          awscli==1.11.76
         name: "Install dependencies"
     - 
       restore_cache: 
@@ -37,3 +40,5 @@ machine:
         command: "python --version\n"
         name: "Test Case"
   working_directory: /app
+
+ 
