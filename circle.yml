@@ -1,20 +1,15 @@
 ---
-jobs:
-   build:
-      working_directory: /app
-   docker:
-      - image: docker:17.09-rc-git
-   steps:
-      - checkout
-      - setup_remote_docker
-      - run:
-         name: Install dependencies
-         command: |
-            apk add --no-cache \
-            py-pip=9.0.0-r1
-            pip install \
-            docker-compose==1.12.0 \
-            awscli==1.11.76
+machine:
+   php:
+   version: 5.6.30
+   mysql:
+   vesrion: 5.5.47
+dependencies:
+   pre:
+      - sudo apt-add-repository -y ppa:ondrej/php
+      - sudo apt-get -y update
+      - sudo apt-get -y install php5.6
+      - sudo apt-get -y install mysql-server
 test:
    override:
-      aws --version
+      - php --version
