@@ -1,35 +1,39 @@
----
-machine:
-   jobs:
-   build:
-   working_directory: /app
-   docker:
-      - image: docker:17.09.0-ce-git
-   steps:
-      - checkout
-      - setup_remote_docker
-      - run:
-         name: Install dependencies
-         command: |
+--- 
+machine: 
+  build: ~
+  docker: 
+    - 
+      image: "docker:17.09.0-ce-git"
+  jobs: ~
+  steps: 
+    - checkout
+    - setup_remote_docker
+    - 
+      run: 
+        command: |
             sudo apt-get -y install pythone-pip
             sudo apt-get -y install curl
             sudo curl -o /usr/local/bin/docker-compose -L "https://github.com/docker/compose/releases/download/1.15.0/docker-compose-$(uname -s)-$(uname -m)"
             sudo pip install awscli
-      - restore_cache:
-         keys:
-            - v1-{{.Branch}}
-         paths:
-            - /cache/app.tar
-      - run:
-         name: Load Docker Image layer Cache
-         command: |
+        name: "Install dependencies"
+    - 
+      restore_cache: 
+        keys: 
+          - "v1-{{.Branch}}"
+        paths: 
+          - /cache/app.tar
+    - 
+      run: 
+        command: |
             set +o pipfail
             docker load -i /cache/app.tar | true
-      - run:
-         name: Build Image
-         command: |
-            docker build --cache-from=app -t app .
-      - run:
-         name: Test Case
-         command: |
-            python --version
+        name: "Load Docker Image layer Cache"
+    - 
+      run: 
+        command: "docker build --cache-from=app -t app .\n"
+        name: "Build Image"
+    - 
+      run: 
+        command: "python --version\n"
+        name: "Test Case"
+  working_directory: /app
