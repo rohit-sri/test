@@ -31,5 +31,4 @@ machine:
             docker build --cache-from=app -t app .
       - run:
          name: Test Case
-         command: |
-            docker-compose -f ./docker-compose.test.yml up
+         python --version
