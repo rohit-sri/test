@@ -1,0 +1,23 @@
+{
+    "family": "latest",
+    "containerDefinitions": [
+        {
+            "name": "latest",
+            "image": "aws_account_id.dkr.ecr.us-east-1.amazonaws.com/test:latest",
+            "cpu": 10,
+            "memory": 500,
+            "portMappings": [
+                {
+                    "containerPort": 8080,
+                    "hostPort": 8080
+                }
+            ],
+            "entryPoint": [
+                "/usr/sbin/aws",
+                "-D",
+                "FOREGROUND"
+            ],
+            "essential": true
+        }
+    ]
+}
