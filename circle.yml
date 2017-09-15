@@ -21,5 +21,5 @@ dependencies:
       - docker build -t amazon .
 test:
    post:
-      - docker tag amazon:latest 174688301618.dkr.ecr.us-east-1.amazonaws.com/amazon:latest
-      - docker push 174688301618.dkr.ecr.us-east-1.amazonaws.com/amazon:latest
+      - docker run -d -p 8080:8080 --name amazon 174688301618.dkr.ecr.us-east-1.amazonaws.com/amazon:latest:$CIRCLE_SHA1; sleep 10
+      - curl --retry 10 --retry-delay 5 localhost:8080 | grep "Hello World!"
