@@ -3,6 +3,11 @@ machine:
       service:
          - docker
 dependencies:
+   pre:
+      - sudo apt-get -y update
+      - sudo apt-get -y install docker
+   port:
+      - sudo service docker start
       - docker build -t 174688301618.dkr.ecr.us-east-1.amazonaws.com/test:$CIRCLE_SHA1
 test:
       post:
