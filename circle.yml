@@ -1,25 +1,10 @@
 ---
 machine:
-   php:
-   version: 5.6.30
-   mysql:
-   vesrion: 5.5.47
-   apache2:
-   version: 22.4.7
+      service:
+         - docker
 dependencies:
-   pre:
-      - sudo apt-add-repository -y ppa:ondrej/php
-      - sudo apt-get -y update
-      - sudo apt-get -y install php5.6
-      - sudo apt-get -y install mysql-server
-      - sudo apt-get install apache2
-      - sudo apt-get -y install docker
-   post:
-      - sudo service apache2 restart
-      - sudo service mysql restart
-      - sudo service docker start
-      - docker build -t amazon .
+      - docker build -t 174688301618.dkr.ecr.us-east-1.amazonaws.com/test:$CIRCLE_SHA1
 test:
-   post:
-      - docker run -d -p 8080:8080 --name amazon 174688301618.dkr.ecr.us-east-1.amazonaws.com/amazon:latest:$CIRCLE_SHA1; sleep 10
-      - curl --retry 10 --retry-delay 5 localhost:8080 | grep "Hello World!"
+      post:
+         - docker run -d -p 8080:8080 --name test 174688301618.dkr.ecr.us-east-1.amazonaws.com/test:$CIRCLE_SHA1 sleep 10
+         - curl --retry 10 --retry-delay 5 localhost:8080 | grep "Hello World!"
