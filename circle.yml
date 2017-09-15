@@ -15,5 +15,5 @@ test:
       post:
          - docker run -d -p 8080:8080 --name test $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/test:latest sleep 10
          - docker ps
-         - aws ecr get-login
+         - eval $(aws ecr get-login)
          - docker push $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/test:latest
