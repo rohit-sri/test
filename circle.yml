@@ -8,11 +8,11 @@ dependencies:
       - sudo apt-get -y install docker
    post:
       - sudo service docker start
-      - docker build -t test .
-      - docker tag test:latest $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/test:latest
+      - docker build -t aws .
+      - docker tag aws:latest $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/aws:latest
 test:
       post:
-         - docker run -d -p 8080:8080 --name test $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/test:latest sleep 10
+         - docker run -d -p 8080:8080 --name aws $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/aws:latest sleep 10
          - docker ps
          - eval $(aws ecr get-login --region us-east-1)
-         - docker push $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/test:latest
+         - docker push $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/aws:latest
