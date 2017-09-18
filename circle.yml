@@ -1,7 +1,6 @@
 ---
-machine:
-      service:
-         - docker
+service:
+      - docker
 dependencies:
    pre:
       - sudo apt-get -y update
