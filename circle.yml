@@ -6,6 +6,8 @@ dependencies:
       - sudo apt-get -y update
       - sudo apt-get -y install awscli
       - sudo apt-get -y install docker
+   command: mv /var/lib/docker /var/lib/docker_old
+   
    post:
       - sudo service docker start
       - docker build -t aws .
