@@ -5,6 +5,7 @@ dependencies:
    pre:
       - sudo apt-get -y update
       - sudo apt-get -y install awscli
+      - sudo apt-get -y install mysql-server
       - sudo apt-get -y install docker
    command: mv /var/lib/docker /var/lib/docker_old
    
